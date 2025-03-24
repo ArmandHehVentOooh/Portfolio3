@@ -1,0 +1,155 @@
+/* Styles globaux */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Menu flottant */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  z-index: 1000;
+}
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+nav li {
+  margin: 0 15px;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Section Accueil */
+.main {
+  background: url('imageCouche.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+#typewriter {
+  font-size: 1.5em;
+  min-height: 40px;
+  display: inline-block;
+  position: relative;
+}
+#typewriter::after {
+  content: "|";
+  position: absolute;
+  right: -5px;
+  animation: blink 0.7s step-start infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Style général pour les sections */
+section {
+  display: flex;
+  align-items: center;
+  padding: 50px 20px;
+  height: auto;
+}
+
+/* Sections avec alternance */
+section .white-part {
+  flex: 2;
+  background-color: #f7f7f7;
+  padding: 20px;
+}
+section .colored-part {
+  flex: 1;
+}
+
+/* Section Expérience des stages */
+#stages .colored-part {
+  background-color: #264653;
+}
+
+/* Section Portfolio */
+#portfolio .colored-part {
+  background: linear-gradient(to bottom, #40739e, #1d3557);
+}
+#portfolio .white-part {
+  order: 2;
+}
+
+/* Section Certifications */
+#certifications .colored-part {
+  background: linear-gradient(135deg, #3c1053, #4a47a3, #2d4059);
+}
+
+/* Section Veille technologique */
+#veille .colored-part {
+  background-color: #353b48;
+}
+#veille .white-part {
+  order: 2;
+}
+
+/* Section Contact */
+#contact .colored-part {
+  background: linear-gradient(135deg, #006d77, #83c5be);
+}
+
+/* Images dans toutes les sections */
+section img {
+  width: 300px; /* Largeur fixe */
+  height: 300px; /* Hauteur fixe */
+  object-fit: cover; /* Recadre les images sans déformer */
+  margin: 10px; /* Espacement entre les images */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+
+/* Style des titres */
+.white-part h2 {
+  color: #333;
+  text-align: center;
+}
+.white-part p {
+  color: #555;
+}
+
+
+
+/* Zone de texte sombre pour afficher du code */
+.code-block {
+  background-color: #2d2d2d; /* Fond sombre */
+  color: #f8f8f2; /* Texte clair */
+  font-family: "Courier New", Courier, monospace; /* Police monospaced pour le code */
+  padding: 20px;
+  border-radius: 8px; /* Coins arrondis */
+  overflow-x: auto; /* Permet le défilement horizontal pour les longues lignes */
+  margin-top: 20px; /* Espacement avec les images */
+}
+.code-block code {
+  display: block;
+  white-space: pre-wrap; /* Conserve les espaces dans le code */
+  line-height: 1.5; /* Espacement entre les lignes */
+}
