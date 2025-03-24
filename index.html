@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Armand</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Menu flottant -->
+  <nav>
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#stages">Expérience des stages</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#veille">Veille technologique</a></li>
+      <li><a href="#contact">A propos de moi</a></li>
+    </ul>
+  </nav>
+
+  <!-- Section Accueil -->
+  <section class="main" id="accueil">
+    <div>
+      <h1>Bienvenu sur mon Portfolio</h1>
+      <div id="typewriter"></div>
+    </div>
+  </section>
+
+  <!-- Section Expérience des stages -->
+  <section id="stages">
+    <div class="white-part">
+      <h2>Expérience des stages</h2>
+      <p>Voici un aperçu de mes activités de stage en 1ère année à EDF Martinique :</p>
+      <img src="EDFmartinique.jpeg" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="orangeEntre.png" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="Lenovo.jpeg" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="SamsungA51.jpeg" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="TelSatelliteIRIDIUM.jpg" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="GLPI.png" alt="Stage 1" style="max-width: 100%; height: auto;">
+      
+      <p>La seconde année se fit à SM HLM et fut portée sur :</p>
+      <img src="SMhlm.png" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="PowerShell.png" alt="Stage 1" style="max-width: 100%; height: auto;">
+
+      <!-- Zone de texte sombre pour afficher du code PowerShell -->
+      <div class="code-block">
+        <pre>
+  <code>
+    #c'est explicite
+    $stock_de_PDF = "C:\Users\AVENTADOUR\Documents\Dossier de Quittances TEST"
+    
+    # Récupérer tous les PDF du dossier et de ses sous-dossiers
+    $dossiers = Get-ChildItem -Path $stock_de_PDF -Filter "FactureBidon_*_*_MonENTREPRISE_*.pdf" -Recurse -ErrorAction SilentlyContinue -Force
+    
+    # Abréviations des mois
+    $moisAbr = @{
+        "janvier" = "janv."
+        "février" = "févr."
+        "mars" = "mars"
+        "avril" = "avr."
+        "mai" = "mai"
+        "juin" = "juin"
+        "juillet" = "juil."
+        "août" = "août"
+        "septembre" = "sept."
+        "octobre" = "oct."
+        "novembre" = "nov."
+        "décembre" = "déc."
+    }
+    
+    # Numéros des mois
+    $moisNum = @{
+        "janvier" = "01"
+        "février" = "02"
+        "mars" = "03"
+        "avril" = "04"
+        "mai" = "05"
+        "juin" = "06"
+        "juillet" = "07"
+        "août" = "08"
+        "septembre" = "09"
+        "octobre" = "10"
+        "novembre" = "11"
+        "décembre" = "12"
+    }
+    
+    # Parcourir chaque fichier PDF
+    foreach ($dossier in $dossiers) {
+        # Extraire les informations du nom de fichier
+        if ($dossier.Name -match "FactureBidon_(\d{4})_(\w+)_MonENTREPRISE_(\d+)") {
+            $annee = $matches[1]#c'est (\d{4}), 4 chifres
+            $mois = $matches[2]#c'est (\w+), n lettres
+            $numero = $matches[3]#c'est (\d+), n chiffres
+    
+            # Affichage pour le terminal
+            Write-Host "Fichier: $($dossier.Name)"
+            Write-Host "Année: $annee"
+            Write-Host "Mois: $mois"
+            Write-Host "Numéro: $numero"
+    
+            # laisser les deux derniers chiffres de l'année
+            $anneeAbr = $annee.Substring(2, 2)
+    
+            # Vérifier si le mois existe dans la liste
+            if ($moisNum.ContainsKey($mois) -and $moisAbr.ContainsKey($mois)) {
+                # Obtenir le numéro du mois
+                $moisNumFormate = $moisNum[$mois]
+    
+                # Obtenir l'abréviation du mois
+                $moisAbrFormate = $moisAbr[$mois]
+    
+                # Créer le nom du dossier
+                $dossierNom = "$anneeAbr$moisNumFormate QUIT $moisAbrFormate $annee"
+    
+                # Chemin complet du dossier de destination
+                $dossierDestination = Join-Path -Path $stock_de_PDF -ChildPath $dossierNom
+    
+    
+                # Créer le dossier s'il n'existe pas
+                if (-not (Test-Path -Path $dossierDestination)) {
+                    New-Item -ItemType Directory -Path $dossierDestination
+                } else {
+                    Write-Host "Le dossier $dossierDestination existe déjà."
+                }
+    
+                # copier le fichier dans le dossier de destination
+                Copy-Item -Path $dossier.FullName -Destination $dossierDestination
+            } else {
+                Write-Host "Le mois '$mois' n'existe pas on dirait."
+            }
+        } else {
+            Write-Host "Le fichier $($dossier.Name) ne correspond pas au modèle attendu."
+        }
+    }
+  </code>
+        </pre>
+      </div>
+      <img src="PowerBI.jpeg" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="SMpowerBI1.jpg" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="SMpowerBI2.jpg" alt="Stage 1" style="max-width: 100%; height: auto;">
+      <img src="SMpowerBI3.jpg" alt="Stage 1" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="colored-part"></div>
+  </section>
+  
+
+  <!-- Section Portfolio -->
+  <section id="portfolio">
+    <div class="colored-part"></div>
+    <div class="white-part">
+      <h2>Portfolio</h2>
+      <p>Découvrez un apperçu synthétisé de mes projets et travaux réalisées durant mes deux années de BTS SIO, que se soit en présentiel, en stage ou simplement chez moi. </p>
+      <div style="display: flex; gap: 10px;">
+        <iframe src="tableauComp" width="100%" height="500px" style="border: none;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Certifications -->
+  <section id="certifications">
+    <div class="white-part">
+      <h2>Certifications</h2>
+      <p>Mes certifications et formations : preuve de mes compétences. J'ai donc décidé de me former outre PIX, sur Java, et sur l'IA. </p>
+      <img src="pix.png" alt="Certification Logo" style="max-width: 100%; height: auto;">
+      <!-- Intégration du PDF -->
+      <iframe src="attestation-pix-20250211.pdf" width="100%" height="500px" style="border: none;"></iframe>
+      <img src="OpenclassRoom.png" alt="Certification Logo" style="max-width: 100%; height: auto;">
+      <img src="NvidiaViseLaCertif.png" alt="Certification Logo" style="max-width: 100%; height: auto;">
+    </div>
+    <div class="colored-part"></div>
+  </section>
+
+  <!-- Section Veille technologique -->
+  <section id="veille">
+    <div class="colored-part"></div>
+    <div class="white-part">
+      <h2>Veille technologique</h2>
+      <p>Mes centres d'intérêt tournent autour de la science, de la médecine, de l'espace, de la finance, de l'économie, de la psychologie,... et ce qui nous intéresse particulièrement aujourd'hui concerne mes intérets en lien avec la programmation et outils numériques. J'ai donc décidé d'avoir une approche passive avec un abonnement à la Newsletter de "L'usine digitale" ainsi que mes centres d'intérêts sur "Quora". Mais mon approche ne s'arrête pas là car pour mieux apprivoiser un outil, comme PowerBI, ou une technologie de façon plus générale comme la création d'IA, j'utilise Youtube.</p>
+      <img src="usineDigital-Quora.png" alt="Graphique Technologie" style="max-width: 100%; height: auto;">
+      <img src="Youtube.png" alt="Graphique Technologie" style="max-width: 100%; height: auto;">
+      <img src="VeillePowerBI.png" alt="Graphique Technologie" style="max-width: 100%; height: auto;">
+      <img src="image6.png" alt="Graphique Technologie" style="max-width: 100%; height: auto;">
+    </div>
+  </section>
+
+  <!-- Section Contact -->
+  <section id="contact">
+    <div class="white-part">
+      <h2>A propos de ma vision</h2>
+      <p>Je m'appelle Armand VENTADOUR et je suis actuellement étudiant en BTS SIO. Tout au long de ma formation, j'ai pu acquérir des compétences solides en développement et en gestion des systèmes d'information. Mais c'est réellement lors de mon stage que j'ai découvert une véritable passion pour l'analyse de données.<br><br>
+
+        Pendant cette expérience en entreprise, j'ai eu l'opportunité de toucher à la data analyse, d'explorer des bases de données, d'extraire des informations pertinentes et de comprendre l'impact des données sur la prise de décision. Cette immersion m'a confirmé mon envie de me spécialiser dans ce domaine.<br><br>
+        
+        C'est pourquoi je souhaite poursuivre mes études à l'ENI École d'Informatique, afin de me perfectionner et d'évoluer vers le métier de Data Scientist. Mon objectif est d'approfondir mes compétences en machine learning, big data et intelligence artificielle, pour pouvoir exploiter pleinement la puissance des données et apporter une réelle valeur aux entreprises.<br><br>
+        
+        Je suis convaincu que cette poursuite d'études me permettra d'atteindre mon ambition et de m'épanouir dans un domaine en pleine expansion. Merci à tous pour votre attention !</p>
+      <img src="image7.png" alt="Icône Contact" style="width: 50px; display: block; margin: auto; margin-top: 20px;">
+    </div>
+    <div class="colored-part"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
